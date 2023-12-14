@@ -35,15 +35,15 @@
   </style>
 </head>
 <body>
-  <label for="userInput">Enter Arabic Text:</label>
+  <label for="userInput">ادخل النص </label>
   <br>
-  <textarea id="userInput" rows="4" placeholder="Type or paste Arabic text here"></textarea>
+  <textarea id="userInput" rows="4" placeholder="اكتب او انسخ النص الاصلي هنا "></textarea>
   <br>
-  <button onclick="modifyText()">Add Dots</button>
+  <button onclick="modifyText()">تعديل النص </button>
 
   <div id="arabicText"></div>
 
-  <button onclick="copyText()">Copy Modified Text</button>
+  <button onclick="copyText()">نسخ</button>
 
   <script>
     function modifyText() {
@@ -51,7 +51,7 @@
       var dottedText = addDotsToArabic(userInput);
 
       // Display the modified text
-      document.getElementById("arabicText").innerHTML = `<p><strong>Modified Text:</strong> ${dottedText}</p>`;
+      document.getElementById("arabicText").innerHTML = `<p><strong></strong> ${dottedText}</p>`;
     }
 
     function addDotsToArabic(text) {
@@ -78,7 +78,7 @@
       tempInput.select();
       document.execCommand("copy");
       document.body.removeChild(tempInput);
-      alert("Modified text copied to clipboard!");
+      alert("تم النسخ الى الحافظة ");
     }
   </script>
 </body>
