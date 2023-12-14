@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif; 
+    }
+  </style>
+</head>
+<body>
+  <label for="userInput">ادخل النص هنا</label>
+  <textarea id="userInput" rows="4" cols="50"></textarea>
+  <br>
+  <button onclick="modifyText()">تعديل</button>
+
+  <div id="arabicText"></div>
+
+  <script>
+    function modifyText() {
+      var userInput = document.getElementById("userInput").value;
+      var dottedText = addDotsToArabic(userInput);
+
+      // Display the modified text
+      document.getElementById("arabicText").innerHTML = `
+        <p><strong>Modified Text:</strong> ${dottedText}</p>
+      `;
+    }
+
+    function addDotsToArabic(text) {
+      // Split the text into words
+      var words = text.split(/\s+/);
+
+      // Add a dot in the middle of each word
+      var dottedWords = words.map(function(word) {
+        var middleIndex = Math.floor(word.length / 2);
+        var dottedWord = word.slice(0, middleIndex) + "." + word.slice(middleIndex);
+        return dottedWord;
+      });
+
+      // Join the words back together with spaces
+      var dottedText = dottedWords.join(" ");
+      return dottedText;
+    }
+  </script>
+</body>
+</html>
