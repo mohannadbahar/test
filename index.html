@@ -3,20 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>Arabic Text with Dots</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif; 
+      font-family: 'Arial', sans-serif; /* Use an Arabic font if available */
+      text-align: center;
+      margin: 20px;
+    }
+
+    label {
+      font-size: 18px;
+    }
+
+    textarea {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    #arabicText {
+      margin-top: 20px;
+      font-size: 18px;
     }
   </style>
 </head>
 <body>
-  <label for="userInput">ادخل النص هنا</label>
-  <textarea id="userInput" rows="4" cols="50"></textarea>
+  <label for="userInput">Enter Arabic Text:</label>
   <br>
-  <button onclick="modifyText()">تعديل</button>
+  <textarea id="userInput" rows="4" placeholder="Type or paste Arabic text here"></textarea>
+  <br>
+  <button onclick="modifyText()">Add Dots</button>
 
   <div id="arabicText"></div>
+
+  <button onclick="copyText()">Copy Modified Text</button>
 
   <script>
     function modifyText() {
@@ -24,9 +51,7 @@
       var dottedText = addDotsToArabic(userInput);
 
       // Display the modified text
-      document.getElementById("arabicText").innerHTML = `
-        <p><strong>Modified Text:</strong> ${dottedText}</p>
-      `;
+      document.getElementById("arabicText").innerHTML = `<p><strong>Modified Text:</strong> ${dottedText}</p>`;
     }
 
     function addDotsToArabic(text) {
@@ -43,6 +68,17 @@
       // Join the words back together with spaces
       var dottedText = dottedWords.join(" ");
       return dottedText;
+    }
+
+    function copyText() {
+      var modifiedText = document.getElementById("arabicText").innerText;
+      var tempInput = document.createElement("textarea");
+      document.body.appendChild(tempInput);
+      tempInput.value = modifiedText;
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      alert("Modified text copied to clipboard!");
     }
   </script>
 </body>
